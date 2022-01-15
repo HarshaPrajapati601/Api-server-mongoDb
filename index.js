@@ -7,6 +7,17 @@ const { ppid } = require('process');
 
 const app = express();
 const router = require('./router');
+const mongoose =  require('mongoose');
+
+// DB Setup
+mongoose.connect("mongodb://localhost/auth", { useNewUrlParser: true });
+ 
+const connection = mongoose.connection;
+ 
+connection.on("connected", function() {
+  console.log("connected to db");
+});
+//it creates a new db inside of mongo DB called auth ..give any name you like
 
 //App setup - how we want express to  work through
 //1; tell our app to use morgan and we pass morgan string to combine
