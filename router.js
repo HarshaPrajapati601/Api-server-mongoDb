@@ -1,5 +1,8 @@
 const Authenticstion = require('./controllers/authentication');
+const passportService = require('./services/passport');
+const passport = require('passport');
 
+const requireAuth = passport.authenticate('jwt', { session: false});
 
 //route handler for pour signup route
 
@@ -10,6 +13,8 @@ module.exports = function (app) {
     // app.get('/', function(req, res, next) {
     //     res.send(['hi', 'iam', 'harsha'])
     // })
-
+    app.get('/', requireAuth, function(req, res){
+        res.send({ hi: 'there'});
+    })
     app.post('/signup', Authenticstion.signup)
 }
