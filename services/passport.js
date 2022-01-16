@@ -3,6 +3,26 @@ const User = require('../models/user');
 const config = require('../config');
 const JwtStratergy = require('passport-jwt').Strategy;
 const ExtractJwt = require('passport-jwt').ExtractJwt;
+const localStratergy = require('passport-local');
+
+//create local stratergy
+const localOptions = { usernameField: 'email'};
+const localLogin = new localStratergy(localOptions, function(email, password, done) {
+
+    //Verfiy the email and passwrod call done with user
+    User.findOne({email: email}, function(err, user) {
+        if(err) { return done(err); }
+
+        if(!user) { return done(null, false)}
+
+        //compare passwords - is 'password - encrypted paswrd ' = '(user.password' 
+    })
+
+    //if correct email and passwrd
+
+    //else call with false
+
+})
 
 //setup options for JWT stratergy
 const jwtStratergy = {

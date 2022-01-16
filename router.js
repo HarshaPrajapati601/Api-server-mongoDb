@@ -15,6 +15,10 @@ module.exports = function (app) {
     // })
     app.get('/', requireAuth, function(req, res){
         res.send({ hi: 'there'});
-    })
-    app.post('/signup', Authenticstion.signup)
+    });
+    app.post('/signup', Authenticstion.signup);
 }
+
+
+//local stratergy
+//1 . npm install --save passport-local
