@@ -3,6 +3,7 @@ const passportService = require('./services/passport');
 const passport = require('passport');
 
 const requireAuth = passport.authenticate('jwt', { session: false});
+const requireSignin = passport.authenticate('local', { session: false});
 
 //route handler for pour signup route
 
@@ -16,6 +17,7 @@ module.exports = function (app) {
     app.get('/', requireAuth, function(req, res){
         res.send({ hi: 'there'});
     });
+    app.post('/signin', requireSignin, Authenticstion.signin);
     app.post('/signup', Authenticstion.signup);
 }
 

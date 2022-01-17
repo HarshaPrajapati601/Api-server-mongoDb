@@ -41,6 +41,12 @@ exports.signup = function(req, res, next) {
 
         //Respond to request user was created
     })
+}
 
+exports.signin = function(req, res, next) {
+   //user already has emial and passwrd
+
+   //we just need to give them token
+   res.send({ token: tokenForUser(req.user)});
 
 }
